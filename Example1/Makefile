@@ -1,9 +1,16 @@
 CC=g++  #just variable same as in bash
 
-DIRS=obj-main obj-exp
+#VAR1 = recursively expanded variable
+#VAR2 := single expanded variable (as usual variable)
+
+DIRS:=obj-main obj-exp
 MAIN_OBJ=obj-all
-# .PHONY meaning: 
-# All "phoned" targets are threated as targets, not files 
+
+# $ -make variable dereferencing
+# $$ -shell var dereferencing
+
+# .PHONY meaning:
+# All "phoned" targets are threated only as targets, not files
 
 .PHONY: all
 .PHONY: clean
@@ -15,6 +22,7 @@ all:  exp.o main.o
 		cp *.o ./../obj-all; \
 		cd -; \
 	done
+#	$(CC) $(wildcard ./obj-all/*.o) -o EXECUTABLE.work
 	$(CC) $(MAIN_OBJ)/*.o  -o EXECUTABLE.work
 main.o:
 	mkdir -p obj-main
