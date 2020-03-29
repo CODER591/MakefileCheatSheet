@@ -17,6 +17,9 @@ MAIN_OBJ=obj-all
 
 all: finalfile
 
+# Also comment regarding -g flag
+# It needs to be used even linking, not only when creating "final" objective
+# So, lets add this globally
 debug: CC+=-g # Now we can build debug version too
 debug: all
 
