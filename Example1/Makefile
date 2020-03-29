@@ -15,14 +15,19 @@ MAIN_OBJ=obj-all
 .PHONY: all
 .PHONY: clean
 
-all:  exp.o main.o
+all: finalfile
+
+debug: CC+=-g # Now we can build debug version too
+debug: all
+
+finalfile:  exp.o main.o
 	mkdir -p obj-all   # mkdir -p would not brake makefile if folder exist
 	for dir in $(DIRS); do \
 		cd $$dir; \
 		cp *.o ./../obj-all; \
 		cd -; \
 	done
-#	$(CC) $(wildcard ./obj-all/*.o) -o EXECUTABLE.work
+#	$(CC) $(wildcard ./obj-all/*.o) -o EXECUTABLE.work  #bad example with wildcard, it would not work
 	$(CC) $(MAIN_OBJ)/*.o  -o EXECUTABLE.work
 main.o:
 	mkdir -p obj-main
