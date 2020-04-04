@@ -9,6 +9,8 @@ MAIN_OBJ=obj-all
 # $ -make variable dereferencing
 # $$ -shell var dereferencing
 
+# ${} is equivalent to $() but avoid mixing it in makefile code
+
 # .PHONY meaning:
 # All "phoned" targets are threated only as targets, not files
 
