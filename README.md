@@ -7,4 +7,5 @@
 3) Example3 - Including libraries
    1. building and linking static library (.a)
    2. building and linking dynamic library (.so)
+   3. building and linking dynamic and static library together
 4) Example4 - All in together, and avoid recompilation and also triggering running submake
