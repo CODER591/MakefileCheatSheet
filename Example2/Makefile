@@ -1,3 +1,9 @@
+# in this Makefile
+# we are compiling files separately in separate folders
+# after that we are copying object files into one folder
+# and then we are link them together
+
+
 CC=g++
 OBJ_DIRS:=main_dir/obj-main exp_dir/obj-exp kek_dir/obj-kek
 #MAIN_OBJ=main_dir/obj-all
