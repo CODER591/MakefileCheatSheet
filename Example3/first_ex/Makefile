@@ -13,6 +13,23 @@
 # -l flag examples: -lpthread -lsomeotherstaff
 #  Also, there is some weird library naming convention that should be explained 
 
+
+# UPDATE:
+#  Naming convention:
+#  Static library:
+#  final_filename = lib + <library_name> + .a
+#
+#  Dynamic(Shared library)
+#
+#  final_filename = lib + <library_name> + .so + <library version information>
+#
+#	<library version info> = <M>.<m>.<p>  # I am not using it
+#	<M> -major version
+#	<m> -minor version
+#	<p> -patch version
+#	
+#	Also, there is "soname"  lib+ <library name> + .so + <library major version digit>
+#	Example: libfoo.so.1.0.0, libfoo.so.1
 all: main.o
 
 main.o: libmycat.a
