@@ -1,11 +1,12 @@
 
 
 
-#include <iostream>
-#include "stat_lib/statlib_header.h"
+//#include <iostream>
+//#include "stat_lib/statlib_header.h"
+#include "shar_lib/sharlib_header.h"
 
 int main() {
 
-   std::cout<<just_return_five()<<std::endl;
+   print_returned_five();
    return 0;
 }

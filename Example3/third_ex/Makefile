@@ -15,15 +15,24 @@ SHARED_LIB_NAME=libsharedsomefunc.so
 all: finalfile
 
 finalfile: main.o
-	$(CC) *.o -L. -lstaticsomefunc -o final.out
+	$(CC) *.o  ./$(SHARED_LIB_NAME) -o final.out
 
 
-main.o: $(STATIC_LIB_NAME)
+main.o: $(SHARED_LIB_NAME)
 	$(CC) main.cpp -c
 
-#Firstly, lets create the static library
+
+#Secondly, lets build the shared library.
+$(SHARED_LIB_NAME): $(STATIC_LIB_NAME)
+	$(CC) -fPIC -shared -I./stat_lib/ shar_lib/first_shar.cpp -L. -lstaticsomefunc  -o $@
+
+
+# Firstly, lets create the static library
+# There is one thing, with "-fPIC", this flag is required in case we are linking static library into the shared library
+# For details look into the "Static Libraries Issues on 64-bit Linux" chapter of "Advanced C and C++ Compiling" book
+
 $(STATIC_LIB_NAME):
-	$(CC) stat_lib/*.cpp -c
+	$(CC) stat_lib/*.cpp -fPIC -c
 	mv *.o stat_lib/ # definitely smells bad
 	ar rcs $@ stat_lib/*.o
 	#ranlib is not required, because of "s" flag
