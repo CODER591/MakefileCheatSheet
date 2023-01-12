@@ -1,0 +1,7 @@
+In this example executable which is using  shared lib which is using static library
+
+
+So, steps are:
+ 1. Create static library
+ 2. Link static library into the shared
+ 3. Link shared lib into the main executable
